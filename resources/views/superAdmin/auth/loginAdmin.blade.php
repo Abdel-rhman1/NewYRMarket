@@ -50,7 +50,7 @@
       <div class="container">
         <div class="form-outer text-center d-flex align-items-center">
           <div class="form-inner">
-            <div class="logo"><span>Admin {{$general_setting->site_title}}</span></div>
+            <div class="logo"><span> Login Admin {{$general_setting->site_title}}</span></div>
             @if(session()->has('delete_message'))
             <div class="alert alert-danger alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('delete_message') }}</div> 
             @endif
