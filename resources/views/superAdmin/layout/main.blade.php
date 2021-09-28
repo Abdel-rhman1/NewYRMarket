@@ -1575,7 +1575,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 								<div class="topbar-item" data-toggle="dropdown" data-display="static">
 									<div class="btn btn-icon w-auto btn-clean d-flex align-items-center pr-1 pl-3">
-										<span class="text-dark-50 font-size-base d-none d-xl-inline mr-3">{{ Auth::user()->name }}</span>
+										<span class="text-dark-50 font-size-base d-none d-xl-inline mr-3">{{ Auth::guard('admin')->user()->name }}</span>
 										<span class="symbol symbol-35 symbol-light-success">
 											<span class="symbol-label font-size-h5 ">
 												<svg width="20px" height="20px" viewBox="0 0 16 16"

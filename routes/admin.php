@@ -22,6 +22,10 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::get('/admin', function () {
         return view('index');
     });
+    Route::group(['namespace' => 'SuperAdmin'], function() {
+    Route::resource('/superadmin', 'SuperAdminController');
+    });
+
 });
 
 
