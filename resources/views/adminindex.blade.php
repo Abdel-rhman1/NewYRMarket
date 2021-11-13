@@ -1,9 +1,7 @@
-@extends('layout.main')
+@extends('admin.layout.main')
 @section('content')
 <div class="content d-flex flex-column flex-column-fluid" id="tc_content">
 					<!--begin::Subheader-->
-					@include('layout.alerts.success')
-					@include('layout.alerts.errors')
 					<div class="subheader py-2 py-lg-6 subheader-solid">
 						<div class="container-fluid">
 							<nav aria-label="breadcrumb">

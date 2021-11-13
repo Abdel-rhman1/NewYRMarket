@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\SuperAdmin;
-use App\Models\SuperAdmin;
+namespace App\Http\Controllers\Admin;
+use App\Models\Package;
+use App\Models\Feature;
+use App\Http\Requests\PackageRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SuperAdminController extends Controller
+class PackageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,9 @@ class SuperAdminController extends Controller
      */
     public function index()
     {
-            $lims_admin_list = SuperAdmin::where('is_deleted', false)->get();
-            return view('SuperAdmin.superadmin.index', compact('lims_admin_list'));
+        $packages = Package::where('status', 1)->get();
+        $features = Feature::where('status', 1)->get();
+        return view('admin.Package.index', compact('packages', 'features'));
     }
 
     /**
@@ -25,7 +28,8 @@ class SuperAdminController extends Controller
      */
     public function create()
     {
-        //
+        $features = Feature::where('status', 1)->get();
+        return view('admin.Package.create',compact('features'));
     }
 
     /**
@@ -34,9 +38,19 @@ class SuperAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PackageRequest $request)
     {
-        //
+        try{
+            $data = $request->except(['_token','features']);
+            if(!isset($data['status']))
+                $data['status'] = false;
+            $Package = Package::create($data);
+            $Package->features()->attach($request->features);
+            makeNotificationAdmin('One Package has created','fas fa-cog', 'packages.index',['2']);
+            return redirect('languages')->with(['success'=> 'package Inserted Successfully']);
+        }catch(\Exception $ex){
+            return redirect('languages')->with(['error' => 'package Inserted Failed']);
+        }
     }
 
     /**
@@ -58,7 +72,9 @@ class SuperAdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $package = Package::find($id);
+        $features = Feature::where('status', 1)->get();
+        return view('admin.package.edit',compact('package','features'));
     }
 
     /**

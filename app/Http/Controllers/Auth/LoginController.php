@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Auth;
 
   
 use Auth;
+use App\Models\Vendor;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -79,8 +81,22 @@ class LoginController extends Controller
         if(auth()->attempt(array($fieldType => $input['name'], 'password' => $input['password'])))
 
         {
-
-            return redirect('/');
+            /*$vendor = Vendor::find(Auth::user()->v_id);
+            $admins = User::where('v_id', $vendor->id)->get();
+            $OldDate = strtotime($vendor->end_date);
+            $NewDate = date('M j, Y', $OldDate);
+            $diff = date_diff(date_create($NewDate),date_create(date("M j, Y")));
+            if($diff->format('%a')== "0"){
+                $vendor->package_id = 0;
+                $vendor->save();
+                foreach ($admins as $key => $value) {
+                    # code...
+                }
+                return redirect('/')->with(['error' => 'Sorry! Your Package is Expired']);
+            }
+            else
+                return redirect('/')->with(['error' => $diff->format('Your package will expire after %a days') ]);*/
+             return redirect('/');
 
         }else{
 
@@ -98,7 +114,7 @@ class LoginController extends Controller
 
     public function showAdminLoginForm()
     {
-        return view('superAdmin.auth.loginAdmin');
+        return view('admin.auth.loginAdmin');
     }
     
     public function adminLogin(Request $request)

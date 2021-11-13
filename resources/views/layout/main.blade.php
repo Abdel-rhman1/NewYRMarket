@@ -11,7 +11,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <head>
 	<meta charset="utf-8" />
-	<title>Admin | Dashboard</title>
+	<title>New SalePro</title>
 	<meta name="description" content="Updates and statistics" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<!--begin::Fonts-->
@@ -27,7 +27,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<link href="assets/api/datatable/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
 
 
-	<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+	<link rel="shortcut icon" href="assets/media/logos/logo.png" />
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -126,9 +126,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								</li>
 								<li class="nav-item">
 									<a  class="nav-link" data-toggle="collapse" href="javascript:void(0)" data-target="#media" role="button"
-									aria-expanded="false" aria-controls="media">
-
-									  
+									aria-expanded="false" aria-controls="media">									  
 										<span class="svg-icon nav-icon">
 											<svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
 												viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -139,14 +137,14 @@ License: You must have a valid license purchased only from themeforest(the above
 												<polyline points="21 15 16 10 5 21"></polyline>
 											</svg>
 										</span>
-										<span class="nav-text">SuperAdmin</span>
+										<span class="nav-text">Subscriptions</span>
 										<i class="fas fa-chevron-right fa-rotate-90"></i>
 	
 									</a>
 									<div class="collapse nav-collapse" id="media" data-parent="#accordion">
 										<ul class="nav flex-column">
 											<li class="nav-item">
-												<a href="{{route('superadmin.index')}}" class="nav-link sub-nav-link">
+												<a href="{{route('category.index')}}" class="nav-link sub-nav-link">
 													<span class="svg-icon nav-icon d-flex justify-content-center">
 														<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
 															<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -155,64 +153,54 @@ License: You must have a valid license purchased only from themeforest(the above
 													<span class="nav-text">List</span>
 												</a>
 											</li>
-											<li class="nav-item">
-												<a href="media-detail.html" class="nav-link sub-nav-link">
-													<span class="svg-icon nav-icon d-flex justify-content-center">
-														<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
-															<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-														  </svg>
-													</span>
-													<span class="nav-text">Add</span>
-												</a>
-											</li>
-											<li class="nav-item">
-												<a href="media-setting.html" class="nav-link sub-nav-link">
-													<span class="svg-icon nav-icon d-flex justify-content-center">
-														<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
-															<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-														  </svg>
-													</span>
-											
-													<span class="nav-text">Media Settings</span>
-												</a>
-											</li>
 										</ul>
 									</div>
 								</li>
+								@if(PackagePermission('Product'))
 								<li class="nav-item">
 									<a  class="nav-link" data-toggle="collapse"  href="javascript:void(0)" data-target="#catalog" role="button"
 									aria-expanded="false" aria-controls="catalog">
 										<span class="svg-icon nav-icon">
 											<i class="fas fa-boxes font-size-h4"></i>
 										</span>
-										<span class="nav-text">Catalog</span>
+										<span class="nav-text">Products</span>
 										<i class="fas fa-chevron-right fa-rotate-90"></i>
 									</a>
 									<div class="collapse nav-collapse" id="catalog" data-parent="#accordion">
 										<div id="accordion1">
 											<ul class="nav flex-column">
 												<li class="nav-item">
-													<a href="product-units-list.html" class="nav-link sub-nav-link">
+													<a href="{{route('products.index')}}" class="nav-link sub-nav-link">
 														<span class="svg-icon nav-icon d-flex justify-content-center">
 															<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
 																<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 															  </svg>
 														</span>
-														<span class="nav-text">Product Units</span>
+														<span class="nav-text">List</span>
 													</a>
 												</li>
 												<li class="nav-item">
-													<a href="product-variation-list.html" class="nav-link sub-nav-link">
+													<a href="{{route('products.create')}}" class="nav-link sub-nav-link">
 														<span class="svg-icon nav-icon d-flex justify-content-center">
 															<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
 																<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 															  </svg>
 														</span>
-														<span class="nav-text">Product Variations</span>
+														<span class="nav-text">Add</span>
 													</a>
 												</li>
 												<li class="nav-item">
-													<a href="product-brands-list.html" class="nav-link sub-nav-link">
+													<a href="{{route('category.index')}}" class="nav-link sub-nav-link">
+														<span class="svg-icon nav-icon d-flex justify-content-center">
+															<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+																<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+																</svg>
+														</span>
+														<span class="nav-text">Category</span>
+													</a>
+												</li>
+												<li class="nav-item">
+													<a href="{{route('brands.index')}}" class="nav-link sub-nav-link">
 														<span class="svg-icon nav-icon d-flex justify-content-center">
 															<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
 																<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -222,26 +210,26 @@ License: You must have a valid license purchased only from themeforest(the above
 													</a>
 												</li>
 												<li class="nav-item">
-													<a href="product-category-list.html" class="nav-link sub-nav-link">
+													<a href="{{route('units.index')}}" class="nav-link sub-nav-link">
 														<span class="svg-icon nav-icon d-flex justify-content-center">
 															<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
 																<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 															  </svg>
 														</span>
-														<span class="nav-text">Product Categories</span>
+														<span class="nav-text">Product Units</span>
 													</a>
 												</li>
 												<li class="nav-item">
-													<a href="product-review.html" class="nav-link sub-nav-link">
+													<a href="{{route('tax.index')}}" class="nav-link sub-nav-link">
 														<span class="svg-icon nav-icon d-flex justify-content-center">
 															<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
 																<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 															  </svg>
 														</span>
-														<span class="nav-text">Product Review</span>
+														<span class="nav-text">Tax</span>
 													</a>
 												</li>
-												<li class="nav-item">
+												{{--<li class="nav-item">
 													<a href="product-barcode.html" class="nav-link sub-nav-link">
 														<span class="svg-icon nav-icon d-flex justify-content-center">
 															<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
@@ -250,8 +238,8 @@ License: You must have a valid license purchased only from themeforest(the above
 														</span>
 														<span class="nav-text">Product Bar code Label</span>
 													</a>
-												</li>
-												<li class="nav-item">
+												</li>--}}
+												{{--<li class="nav-item">
 													<a  class="nav-link sub-nav-link" data-toggle="collapse" href="index.html#catalogProduct" role="button"
 													aria-expanded="false" aria-controls="catalogProduct">
 													<span class="svg-icon nav-icon d-flex justify-content-center">
@@ -281,9 +269,9 @@ License: You must have a valid license purchased only from themeforest(the above
 														
 														</ul>
 													</div>	
-												</li>
+												</li>--}}
 											
-												<li class="nav-item">
+												{{--<li class="nav-item">
 													<a  class="nav-link sub-nav-link" data-toggle="collapse" href="index.html#catalogStock" role="button"
 													aria-expanded="false" aria-controls="catalogStock">
 													<span class="svg-icon nav-icon d-flex justify-content-center">
@@ -308,13 +296,14 @@ License: You must have a valid license purchased only from themeforest(the above
 															</li>
 														</ul>
 													</div>	
-												</li>
+												</li>--}}
 											
 											</ul>
 										</div>
 									</div>
 								</li>
-								<li class="nav-item">
+								@endif
+								{{--<li class="nav-item">
 									<a  class="nav-link" data-toggle="collapse" href="index.html#catalogPurchase" role="button"
 									aria-expanded="false" aria-controls="catalogPurchase">
 										<span class="svg-icon nav-icon">
@@ -349,8 +338,8 @@ License: You must have a valid license purchased only from themeforest(the above
 										
 										</ul>
 									</div>
-								</li>
-								<li class="nav-item">
+								</li>--}}
+								{{--<li class="nav-item">
 									<a  class="nav-link" data-toggle="collapse" href="index.html#order" role="button"
 									aria-expanded="false" aria-controls="order">
 										<span class="svg-icon nav-icon">
@@ -405,8 +394,8 @@ License: You must have a valid license purchased only from themeforest(the above
 										
 										</ul>
 									</div>
-								</li>
-								<li class="nav-item">
+								</li>--}}
+								{{--<li class="nav-item">
 									<a  class="nav-link" data-toggle="collapse" href="index.html#Quotations" role="button"
 									aria-expanded="false" aria-controls="Quotations">
 										<span class="svg-icon nav-icon">
@@ -439,8 +428,8 @@ License: You must have a valid license purchased only from themeforest(the above
 											</li>
 										</ul>
 									</div>
-								</li>
-								<li class="nav-item">
+								</li>--}}
+								{{--<li class="nav-item">
 									<a  class="nav-link" data-toggle="collapse" href="index.html#Returns" role="button"
 									aria-expanded="false" aria-controls="Returns">
 										<span class="svg-icon nav-icon">
@@ -493,8 +482,8 @@ License: You must have a valid license purchased only from themeforest(the above
 											</li>
 										</ul>
 									</div>
-								</li>
-								<li class="nav-item">
+								</li>--}}
+								{{--<li class="nav-item">
 									<a  class="nav-link" data-toggle="collapse" href="index.html#People" role="button"
 									aria-expanded="false" aria-controls="People">
 										<span class="svg-icon nav-icon">
@@ -577,8 +566,8 @@ License: You must have a valid license purchased only from themeforest(the above
 											</ul> 
 										</div>
 									</div>
-								</li>
-								<li class="nav-item">
+								</li>--}}
+								{{--<li class="nav-item">
 									<a  class="nav-link" data-toggle="collapse" href="index.html#account" role="button"
 									aria-expanded="false" aria-controls="account">
 										<span class="svg-icon nav-icon">
@@ -641,8 +630,8 @@ License: You must have a valid license purchased only from themeforest(the above
 											</li>
 										</ul>
 									</div>
-								</li>
-								<li class="nav-item">
+								</li>--}}
+								{{--<li class="nav-item">
 									<a  class="nav-link" data-toggle="collapse" href="index.html#expenses" role="button"
 									aria-expanded="false" aria-controls="expenses">
 										<span class="svg-icon nav-icon">
@@ -675,8 +664,8 @@ License: You must have a valid license purchased only from themeforest(the above
 											</li>
 										</ul>
 									</div>
-								</li>
-								<li class="nav-item">
+								</li>--}}
+								{{--<li class="nav-item">
 									<a  class="nav-link" data-toggle="collapse" href="index.html#reports" role="button"
 									aria-expanded="false" aria-controls="reports">
 										<span class="svg-icon nav-icon">
@@ -789,9 +778,10 @@ License: You must have a valid license purchased only from themeforest(the above
 											</li>
 										</ul>
 									</div>
-								</li>
+								</li>--}}
+								@if(PackagePermission('Setting'))
 								<li class="nav-item">
-									<a  class="nav-link" data-toggle="collapse" href="index.html#setting" role="button"
+									<a  class="nav-link" data-toggle="collapse" href="javascript:void(0)" data-target="#setting" role="button"
 									aria-expanded="false" aria-controls="setting">
 										<span class="svg-icon nav-icon">
 											<i class="fas fa-cogs font-size-h4"></i>
@@ -802,7 +792,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									<div class="collapse nav-collapse" id="setting" data-parent="#accordion">
 										<div id="accordion3">
 											<ul class="nav flex-column">
-												<li class="nav-item">
+												{{--<li class="nav-item">
 													<a  class="nav-link sub-nav-link" data-toggle="collapse" href="index.html#settingB" role="button"
 													aria-expanded="false" aria-controls="settingB">
 													<span class="svg-icon nav-icon d-flex justify-content-center">
@@ -866,8 +856,8 @@ License: You must have a valid license purchased only from themeforest(the above
 															</li>
 														</ul>
 													</div>	
-												</li>
-												<li class="nav-item">
+												</li>--}}
+												{{--<li class="nav-item">
 													<a  class="nav-link sub-nav-link" data-toggle="collapse" href="index.html#settingW" role="button"
 													aria-expanded="false" aria-controls="settingW">
 													<span class="svg-icon nav-icon d-flex justify-content-center">
@@ -920,8 +910,8 @@ License: You must have a valid license purchased only from themeforest(the above
 															</li>
 														</ul>
 													</div>	
-												</li>
-												<li class="nav-item">
+												</li>--}}
+												{{--<li class="nav-item">
 													<a  class="nav-link sub-nav-link"  data-toggle="collapse" href="index.html#settingA" role="button"
 													aria-expanded="false" aria-controls="settingA">
 													<span class="svg-icon nav-icon d-flex justify-content-center">
@@ -960,13 +950,11 @@ License: You must have a valid license purchased only from themeforest(the above
 																	<span class="nav-text">Login/Signup</span>
 																</a>
 															</li>
-					
-														
 														</ul>
 													</div>	
-												</li>
+												</li>--}}
 												<li class="nav-item">
-													<a href="warehouse.html" class="nav-link sub-nav-link">
+													<a href="{{route('warehouses.index')}}" class="nav-link sub-nav-link">
 														<span class="svg-icon nav-icon d-flex justify-content-center">
 															<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
 																<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -975,7 +963,7 @@ License: You must have a valid license purchased only from themeforest(the above
 														<span class="nav-text">Warehouse</span>
 													</a>
 												</li>
-												<li class="nav-item">
+												{{--<li class="nav-item">
 													<a href="language.html" class="nav-link sub-nav-link">
 														<span class="svg-icon nav-icon d-flex justify-content-center">
 															<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
@@ -984,8 +972,8 @@ License: You must have a valid license purchased only from themeforest(the above
 														</span>
 														<span class="nav-text">Language</span>
 													</a>
-												</li>
-												<li class="nav-item">
+												</li>--}}
+												{{--<li class="nav-item">
 													<a href="currency.html" class="nav-link sub-nav-link">
 														<span class="svg-icon nav-icon d-flex justify-content-center">
 															<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
@@ -994,8 +982,8 @@ License: You must have a valid license purchased only from themeforest(the above
 														</span>
 														<span class="nav-text">Currency</span>
 													</a>
-												</li>
-												<li class="nav-item">
+												</li>--}}
+												{{--<li class="nav-item">
 													<a href="payment.html" class="nav-link sub-nav-link">
 														<span class="svg-icon nav-icon d-flex justify-content-center">
 															<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
@@ -1004,8 +992,8 @@ License: You must have a valid license purchased only from themeforest(the above
 														</span>
 														<span class="nav-text">Payement Methods</span>
 													</a>
-												</li>
-												<li class="nav-item">
+												</li>--}}
+												{{--<li class="nav-item">
 													<a href="shippingmethods.html" class="nav-link sub-nav-link">
 														<span class="svg-icon nav-icon d-flex justify-content-center">
 															<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
@@ -1014,8 +1002,8 @@ License: You must have a valid license purchased only from themeforest(the above
 														</span>
 														<span class="nav-text">Shipping Methods</span>
 													</a>
-												</li>
-												<li class="nav-item">
+												</li>--}}
+												{{--<li class="nav-item">
 													<a href="Tax.html" class="nav-link sub-nav-link">
 														<span class="svg-icon nav-icon d-flex justify-content-center">
 															<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
@@ -1024,8 +1012,8 @@ License: You must have a valid license purchased only from themeforest(the above
 														</span>
 														<span class="nav-text">Tax Settings</span>
 													</a>
-												</li>
-												<li class="nav-item">
+												</li>--}}
+												{{--<li class="nav-item">
 													<a href="coupons.html" class="nav-link sub-nav-link">
 														<span class="svg-icon nav-icon d-flex justify-content-center">
 															<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
@@ -1034,15 +1022,16 @@ License: You must have a valid license purchased only from themeforest(the above
 														</span>
 														<span class="nav-text">Coupon Settings</span>
 													</a>
-												</li>
+												</li>--}}
 											</ul>
 										</div>
 									</div>
 								</li>
+								@endif
 							
 								
 							
-								<li class="nav-header mt-3">
+								{{--<li class="nav-header mt-3">
 									<span class="nav-text font-size-bold">UI Elements</span>
 									<span class="svg-icon nav-icon text-primary">
 										<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-three-dots"
@@ -1051,9 +1040,9 @@ License: You must have a valid license purchased only from themeforest(the above
 												d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
 										</svg>
 									</span>
-								</li>
+								</li>--}}
 								
-								<li class="nav-item">
+								{{--<li class="nav-item">
 									<a  class="nav-link" data-toggle="collapse" href="index.html#components" role="button"
 									aria-expanded="false" aria-controls="components">
 										<span class="svg-icon nav-icon">
@@ -1128,8 +1117,8 @@ License: You must have a valid license purchased only from themeforest(the above
 											</li>
 										</ul>
 									</div>
-								</li>
-								<li class="nav-item mb-5">
+								</li>--}}
+								{{--<li class="nav-item mb-5">
 									<a  class="nav-link" data-toggle="collapse" href="index.html#basic-input" role="button"
 									aria-expanded="false" aria-controls="basic-input">
 										<span class="svg-icon nav-icon">
@@ -1230,7 +1219,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											</li>
 										</ul>
 									</div>
-								</li>
+								</li>--}}
 						
 							</ul>
 						  </div>
@@ -1343,12 +1332,19 @@ License: You must have a valid license purchased only from themeforest(the above
 								</div>
 
 								<div class="dropdown-menu dropdown-menu-right">
-									<a href="index.html#" class="dropdown-item">
+									<a href="{{url('language_switch/en')}}" class="dropdown-item">
 										<span class="symbol symbol-20 mr-3">
 											<img class="h-20px w-20px rounded-sm"
 												src="assets/images/svg/flags/226-united-states.svg" alt="" />
 										</span>
 										English
+									</a>
+									<a href="{{url('language_switch/ar')}}" class="dropdown-item">
+										<span class="symbol symbol-20 mr-3">
+											<img class="h-20px w-20px rounded-sm"
+												src="assets/images/svg/flags/226-united-states.svg" alt="" />
+										</span>
+										Arabic
 									</a>
 
 								</div>
@@ -1432,7 +1428,18 @@ License: You must have a valid license purchased only from themeforest(the above
 												<div></div>
 											</div>
 										</div>
-										<span class="badge badge-pill badge-primary">5</span>
+										<?php 
+											$notifications = DB::table('actions')
+											->where('status',0)
+											->where('vendor_id',Auth::user()->v_id)
+											->get();
+											$count =0;
+											foreach ( $notifications as $notification ){
+												if(in_array(Auth::user()->id, json_decode($notification->will_view)))
+													$count++;
+												}
+										?>
+										<span class="badge badge-pill badge-primary">{{$count}}</span>
 									</div>
 								</div>
 
@@ -1452,106 +1459,24 @@ License: You must have a valid license purchased only from themeforest(the above
 										</div>
 
 										<div class="nav nav-hover scrollbar-1 ">
-
-											<a href="index.html#" class="nav-item border-bottom">
+											<?php 
+											$notifications = DB::table('actions')->where('status',0)->where('vendor_id',Auth::user()->v_id)->orderBy('created_at','desc')->get();	
+											?>
+											@foreach ( $notifications as $notification )
+											@if(in_array(Auth::user()->id, json_decode($notification->will_view)))
+											<a href="{{route('notification.show',$notification->id)}}" class="nav-item border-bottom">
 												<div class="nav-link">
 													<div class="nav-icon mr-3">
-														<i class="fas fa-cog text-primary"></i>
+														<i class="{{$notification->icon}}"></i>
 													</div>
 													<div class="nav-text">
-														<div class="font-weight-bold">New report has been received</div>
+														<div class="font-weight-bold">{{$notification->title}}</div>
 														<div class="text-muted">23 hrs ago</div>
 													</div>
 												</div>
 											</a>
-											<a href="index.html#" class="nav-item border-bottom">
-												<div class="nav-link">
-													<div class="nav-icon mr-3">
-														<i class="fas fa-archive text-secondary"></i>
-													</div>
-													<div class="nav-text">
-														<div class="font-weight-bold">New report has been received</div>
-														<div class="text-muted">23 hrs ago</div>
-													</div>
-												</div>
-											</a>
-											<a href="index.html#" class="nav-item border-bottom">
-												<div class="nav-link">
-													<div class="nav-icon mr-3">
-														<i class="fas fa-plane text-success"></i>
-													</div>
-													<div class="nav-text">
-														<div class="font-weight-bold">New report has been received</div>
-														<div class="text-muted">23 hrs ago</div>
-													</div>
-												</div>
-											</a>
-											<a href="index.html#" class="nav-item border-bottom">
-												<div class="nav-link">
-													<div class="nav-icon mr-3">
-														<i class="fas fa-plane text-success"></i>
-													</div>
-													<div class="nav-text">
-														<div class="font-weight-bold">New report has been received</div>
-														<div class="text-muted">23 hrs ago</div>
-													</div>
-												</div>
-											</a>
-											<a href="index.html#" class="nav-item border-bottom">
-												<div class="nav-link">
-													<div class="nav-icon mr-3">
-														<i class="fas fa-plane text-success"></i>
-													</div>
-													<div class="nav-text">
-														<div class="font-weight-bold">New report has been received</div>
-														<div class="text-muted">23 hrs ago</div>
-													</div>
-												</div>
-											</a>
-											<a href="index.html#" class="nav-item border-bottom">
-												<div class="nav-link">
-													<div class="nav-icon mr-3">
-														<i class="fas fa-plane text-success"></i>
-													</div>
-													<div class="nav-text">
-														<div class="font-weight-bold">New report has been received</div>
-														<div class="text-muted">23 hrs ago</div>
-													</div>
-												</div>
-											</a>
-											<a href="index.html#" class="nav-item border-bottom">
-												<div class="nav-link">
-													<div class="nav-icon mr-3">
-														<i class="fas fa-plane text-success"></i>
-													</div>
-													<div class="nav-text">
-														<div class="font-weight-bold">New report has been received</div>
-														<div class="text-muted">23 hrs ago</div>
-													</div>
-												</div>
-											</a>
-											<a href="index.html#" class="nav-item border-bottom">
-												<div class="nav-link">
-													<div class="nav-icon mr-3">
-														<i class="fas fa-plane text-success"></i>
-													</div>
-													<div class="nav-text">
-														<div class="font-weight-bold">New report has been received</div>
-														<div class="text-muted">23 hrs ago</div>
-													</div>
-												</div>
-											</a>
-											<a href="index.html#" class="nav-item border-bottom">
-												<div class="nav-link">
-													<div class="nav-icon mr-3">
-														<i class="fas fa-daimond text-success"></i>
-													</div>
-													<div class="nav-text">
-														<div class="font-weight-bold">New report has been received</div>
-														<div class="text-muted">23 hrs ago</div>
-													</div>
-												</div>
-											</a>
+											@endif
+											@endforeach
 										</div>
 										<div class="d-flex flex-column p-3 rounded-top">
 
@@ -1771,17 +1696,17 @@ License: You must have a valid license purchased only from themeforest(the above
 
 		</div>
 	</div>	
-	<script src="assets/js/plugin.bundle.min.js"></script>
-	<script src="assets/js/bootstrap.bundle.min.js"></script>
-	<script src="assets/api/jqueryvalidate/jquery.validate.min.js"></script>
-	<script src="assets/api/apexcharts/apexcharts.js"></script>
-	<script src="assets/api/apexcharts/scriptcharts.js"></script> 
-	<script src="assets/api/pace/pace.js"></script>
-	<script src="assets/api/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-	<script src="assets/api/quill/quill.min.js"></script>
-	<script src="assets/api/datatable/jquery.dataTables.min.js"></script>
+	<script src="{{asset('assets/js/plugin.bundle.min.js')}}"></script>
+	<script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+	<script src="{{asset('assets/api/jqueryvalidate/jquery.validate.min.js')}}"></script>
+	<script src="{{asset('assets/api/apexcharts/apexcharts.js')}}"></script>
+	<script src="{{asset('assets/api/apexcharts/scriptcharts.js')}}"></script> 
+	<script src="{{asset('assets/api/pace/pace.js')}}"></script>
+	<script src="{{asset('assets/api/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+	<script src="{{asset('assets/api/quill/quill.min.js')}}"></script>
+	<script src="{{asset('assets/api/datatable/jquery.dataTables.min.js')}}"></script>
 	
-	<script src="assets/js/script.bundle.js"></script>
+	<script src="{{asset('assets/js/script.bundle.js')}}"></script>
 	<script>
 		var options = {
 	  debug: 'info',

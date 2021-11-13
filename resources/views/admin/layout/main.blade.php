@@ -8,10 +8,16 @@ License: You must have a valid license purchased only from themeforest(the above
 -->
 <html lang="en">
 <!--begin::Head-->
+@if (!session()->has('lang_id'))
+	{{session()->put('lang_id', 1)}}
+@endif
+@if(session()->has('lang_id') == 2)
+	<link href="{{asset('assets/css/rtl.css')}}" type="stylesheet" />
+ @endif
 
 <head>
 	<meta charset="utf-8" />
-	<title>Admin | Dashboard</title>
+	<title>New Sales Pro</title>
 	<meta name="description" content="Updates and statistics" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<!--begin::Fonts-->
@@ -19,15 +25,18 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!--end::Fonts-->
 
 	<!--begin::Global Theme Styles(used by all pages)-->
-	<link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+	<link href="{{asset('assets/css/style.css')}}" rel="stylesheet" type="text/css" />
 	<!--end::Global Theme Styles-->
 
-	<link href="assets/api/pace/pace-theme-flat-top.css" rel="stylesheet" type="text/css" />
-	<link href="assets/api/mcustomscrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
-	<link href="assets/api/datatable/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+	<link href="{{asset('assets/api/pace/pace-theme-flat-top.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('assets/api/mcustomscrollbar/jquery.mCustomScrollbar.css')}}" rel="stylesheet" type="text/css" />
+	<link href="{{asset('assets/api/datatable/jquery.dataTables.min.css')}}" rel="stylesheet" type="text/css" />
+
+	<link href="{{asset('assets/api/select2/select2.min.css')}}" rel="stylesheet" />
+	<link href="{{asset('assets/api/multiple-select/multiple-select.min.css')}}" rel="stylesheet">
 
 
-	<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+	<link rel="shortcut icon" href="{{asset('assets/media/logos/logo.png')}}" />
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -36,7 +45,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- Paste this code after body tag -->
 	<div class="se-pre-con">
 		<div class="pre-loader">
-		  <img class="img-fluid" src="assets/images/loadergif.gif" alt="loading">
+		  <img class="img-fluid" src="{{asset('assets/images/loadergif.gif')}}" alt="loading">
 		</div>
 	  </div>
 	<!--begin::Header Mobile-->
@@ -44,7 +53,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<!--begin::Logo-->
 		<a href="index.html" class="brand-logo">
 
-			<span class="brand-text"><img style="height: 25px;" alt="Logo" src="assets/images/misc/logo.png" /></span>
+			<span class="brand-text"><img style="height: 25px;" alt="Logo" src="{{asset('assets/images/misc/logo.png')}}" /></span>
 
 		</a>
 		<!--end::Logo-->
@@ -89,9 +98,9 @@ License: You must have a valid license purchased only from themeforest(the above
 						<!--begin::Logo-->
 	
 						<a href="index.html" class="brand-logo">
-							<img class="brand-image" style="height: 25px;" alt="Logo" src="assets/images/misc/k.png" />
+							<img class="brand-image" style="height: 25px;" alt="Logo" src="{{asset('assets/images/misc/k.png')}}" />
 							<span class="brand-text"><img style="height: 25px;" alt="Logo"
-									src="assets/images/misc/logo.png" /></span>
+									src="{{asset('assets/images/misc/logo.png')}}" /></span>
 	
 						</a>
 						<!--end::Logo-->
@@ -118,7 +127,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											</svg>
 										</span>
 										<span class="nav-text">
-											Dashboard
+											{{translate('Dashboard')}}
 										</span>
 									</a>
 	
@@ -139,7 +148,7 @@ License: You must have a valid license purchased only from themeforest(the above
 												<polyline points="21 15 16 10 5 21"></polyline>
 											</svg>
 										</span>
-										<span class="nav-text">SuperAdmin</span>
+										<span class="nav-text">{{translate('SuperAdmin')}}</span>
 										<i class="fas fa-chevron-right fa-rotate-90"></i>
 	
 									</a>
@@ -152,7 +161,7 @@ License: You must have a valid license purchased only from themeforest(the above
 															<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 														  </svg>
 													</span>
-													<span class="nav-text">List</span>
+													<span class="nav-text">{{translate('List')}}</span>
 												</a>
 											</li>
 											<li class="nav-item">
@@ -185,129 +194,21 @@ License: You must have a valid license purchased only from themeforest(the above
 										<span class="svg-icon nav-icon">
 											<i class="fas fa-boxes font-size-h4"></i>
 										</span>
-										<span class="nav-text">Catalog</span>
+										<span class="nav-text">{{translate('Languages')}}</span>
 										<i class="fas fa-chevron-right fa-rotate-90"></i>
 									</a>
 									<div class="collapse nav-collapse" id="catalog" data-parent="#accordion">
 										<div id="accordion1">
 											<ul class="nav flex-column">
 												<li class="nav-item">
-													<a href="product-units-list.html" class="nav-link sub-nav-link">
+													<a href="{{route('languages.index')}}" class="nav-link sub-nav-link">
 														<span class="svg-icon nav-icon d-flex justify-content-center">
 															<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
 																<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 															  </svg>
 														</span>
-														<span class="nav-text">Product Units</span>
+														<span class="nav-text">{{translate('list')}}</span>
 													</a>
-												</li>
-												<li class="nav-item">
-													<a href="product-variation-list.html" class="nav-link sub-nav-link">
-														<span class="svg-icon nav-icon d-flex justify-content-center">
-															<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
-																<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-															  </svg>
-														</span>
-														<span class="nav-text">Product Variations</span>
-													</a>
-												</li>
-												<li class="nav-item">
-													<a href="product-brands-list.html" class="nav-link sub-nav-link">
-														<span class="svg-icon nav-icon d-flex justify-content-center">
-															<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
-																<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-															  </svg>
-														</span>
-														<span class="nav-text">Product Brands</span>
-													</a>
-												</li>
-												<li class="nav-item">
-													<a href="product-category-list.html" class="nav-link sub-nav-link">
-														<span class="svg-icon nav-icon d-flex justify-content-center">
-															<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
-																<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-															  </svg>
-														</span>
-														<span class="nav-text">Product Categories</span>
-													</a>
-												</li>
-												<li class="nav-item">
-													<a href="product-review.html" class="nav-link sub-nav-link">
-														<span class="svg-icon nav-icon d-flex justify-content-center">
-															<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
-																<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-															  </svg>
-														</span>
-														<span class="nav-text">Product Review</span>
-													</a>
-												</li>
-												<li class="nav-item">
-													<a href="product-barcode.html" class="nav-link sub-nav-link">
-														<span class="svg-icon nav-icon d-flex justify-content-center">
-															<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
-																<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-															  </svg>
-														</span>
-														<span class="nav-text">Product Bar code Label</span>
-													</a>
-												</li>
-												<li class="nav-item">
-													<a  class="nav-link sub-nav-link" data-toggle="collapse" href="index.html#catalogProduct" role="button"
-													aria-expanded="false" aria-controls="catalogProduct">
-													<span class="svg-icon nav-icon d-flex justify-content-center">
-														<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
-															<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-														  </svg>
-													</span>
-														<span class="nav-text">Products</span>
-														<i class="fas fa-chevron-right fa-rotate-90"></i>
-													</a>
-													<div class="collapse nav-collapse" id="catalogProduct" data-parent="#accordion1">
-														<ul class="nav flex-column">
-															<li class="nav-item">
-																<a href="products.html" class="nav-link mini-sub-nav-link">
-																
-																	<span class="nav-text">List</span>
-																</a>
-															</li>
-					
-															<li class="nav-item">
-																<a href="add-product.html" class="nav-link mini-sub-nav-link" >
-																
-																	<span class="nav-text">Add Product</span>
-																</a>
-															</li>
-					
-														
-														</ul>
-													</div>	
-												</li>
-											
-												<li class="nav-item">
-													<a  class="nav-link sub-nav-link" data-toggle="collapse" href="index.html#catalogStock" role="button"
-													aria-expanded="false" aria-controls="catalogStock">
-													<span class="svg-icon nav-icon d-flex justify-content-center">
-														<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
-															<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-														  </svg>
-													</span>
-														<span class="nav-text">Product Stock</span>
-														<i class="fas fa-chevron-right fa-rotate-90"></i>
-													</a>
-													<div class="collapse nav-collapse" id="catalogStock" data-parent="#accordion1">
-														<ul class="nav flex-column">
-															<li class="nav-item">
-																<a href="stock-add.html" class="nav-link mini-sub-nav-link">
-																	<span class="nav-text">Add Stock</span>
-																</a>
-															</li>
-															<li class="nav-item">
-																<a href="stock-transfer.html" class="nav-link mini-sub-nav-link">
-																 	<span class="nav-text">Stock Transfer</span>
-																</a>
-															</li>
-														</ul>
-													</div>	
 												</li>
 											
 											</ul>
@@ -315,18 +216,18 @@ License: You must have a valid license purchased only from themeforest(the above
 									</div>
 								</li>
 								<li class="nav-item">
-									<a  class="nav-link" data-toggle="collapse" href="index.html#catalogPurchase" role="button"
+									<a  class="nav-link" data-toggle="collapse" href="index.html#catalogPurchase" data-target="#catalogPurchase" role="button"
 									aria-expanded="false" aria-controls="catalogPurchase">
 										<span class="svg-icon nav-icon">
 											<i class="fas fa-money-check-alt font-size-h4"></i>
 										</span>
-										<span class="nav-text">Purchase</span>
+										<span class="nav-text">Packages</span>
 										<i class="fas fa-chevron-right fa-rotate-90"></i>
 									</a>
 									<div class="collapse nav-collapse" id="catalogPurchase"  data-parent="#accordion">
 										<ul class="nav flex-column">
 											<li class="nav-item">
-												<a href="purchase-list.html" class="nav-link sub-nav-link">
+												<a href="{{route('packages.index')}}" class="nav-link sub-nav-link">
 													<span class="svg-icon nav-icon d-flex justify-content-center">
 														<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
 															<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -336,13 +237,13 @@ License: You must have a valid license purchased only from themeforest(the above
 												</a>
 											</li>
 											<li class="nav-item">
-												<a href="purchase-add.html" class="nav-link sub-nav-link">
+												<a href="{{route('packages.create')}}" class="nav-link sub-nav-link">
 													<span class="svg-icon nav-icon d-flex justify-content-center">
 														<svg xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
 															<path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
 														  </svg>
 													</span>
-													<span class="nav-text">Add Purchase</span>
+													<span class="nav-text">Add</span>
 												</a>
 											</li>
 										
@@ -1284,7 +1185,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<!--begin::Topbar-->
 						<div class="topbar">
 							<div class="posicon d-lg-block d-none">
-								<a href="pos.html" class="btn btn-primary white mr-2">POS</a>
+								<a href="pos.html" class="btn btn-primary white mr-2">{{translate('POS')}}</a>
 							</div>
 							<div class="topbar-item">
 								<div class="quick-search quick-search-inline ml-20 mr-1 w-300px"
@@ -1306,7 +1207,7 @@ License: You must have a valid license purchased only from themeforest(the above
 													</span>
 												</span>
 											</div>
-											<input type="text" class="form-control h-45px" placeholder="Search...">
+											<input type="text" class="form-control h-45px" placeholder="{{translate('Search')}}...">
 
 										</div>
 									</form>
@@ -1338,18 +1239,21 @@ License: You must have a valid license purchased only from themeforest(the above
 								<div class="topbar-item" data-toggle="dropdown" data-display="static">
 									<div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
 										<img class="h-20px w-20px rounded-sm"
-											src="assets/images/svg/flags/226-united-states.svg" alt="" />
+											src="{{asset('assets/images/svg/flags/226-united-states.svg')}}" alt="" />
 									</div>
 								</div>
 
 								<div class="dropdown-menu dropdown-menu-right">
-									<a href="index.html#" class="dropdown-item">
+									<?php $languages = App\Models\language::where('status',1)->get()?>
+									@foreach ( $languages as $lang )
+									<a href="{{route('language.switch', ['id'=> $lang->id])}}" class="dropdown-item">
 										<span class="symbol symbol-20 mr-3">
 											<img class="h-20px w-20px rounded-sm"
-												src="assets/images/svg/flags/226-united-states.svg" alt="" />
+												src="{{asset('assets/images/svg/flags/226-united-states.svg')}}" alt="" />
 										</span>
-										English
+										{{$lang->name}}
 									</a>
+									@endforeach
 
 								</div>
 
@@ -1432,7 +1336,17 @@ License: You must have a valid license purchased only from themeforest(the above
 												<div></div>
 											</div>
 										</div>
-										<span class="badge badge-pill badge-primary">5</span>
+										<?php 
+											$notifications = DB::table('actions')
+											->where('status',0)
+											->get();
+											$count =0;
+											foreach ( $notifications as $notification ){
+												if(in_array(Auth::guard('admin')->user()->id, json_decode($notification->will_view)))
+													$count++;
+												}
+										?>
+										<span class="badge badge-pill badge-primary">{{$count}}</span>
 									</div>
 								</div>
 
@@ -1444,7 +1358,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											<h4
 												class="d-flex justify-content-between align-items-center mb-0 rounded-top">
 												<span class="font-size-h5 ">Notifications</span>
-												<a href="index.html#" class="btn btn-sm btn-primary-hover py-1 px-2">
+												<a href="#" class="btn btn-sm btn-primary-hover py-1 px-2">
 													Clear
 												</a>
 											</h4>
@@ -1452,111 +1366,37 @@ License: You must have a valid license purchased only from themeforest(the above
 										</div>
 
 										<div class="nav nav-hover scrollbar-1 ">
-
-											<a href="index.html#" class="nav-item border-bottom">
-												<div class="nav-link">
-													<div class="nav-icon mr-3">
-														<i class="fas fa-cog text-primary"></i>
-													</div>
-													<div class="nav-text">
-														<div class="font-weight-bold">New report has been received</div>
-														<div class="text-muted">23 hrs ago</div>
-													</div>
-												</div>
-											</a>
-											<a href="index.html#" class="nav-item border-bottom">
-												<div class="nav-link">
-													<div class="nav-icon mr-3">
-														<i class="fas fa-archive text-secondary"></i>
-													</div>
-													<div class="nav-text">
-														<div class="font-weight-bold">New report has been received</div>
-														<div class="text-muted">23 hrs ago</div>
-													</div>
-												</div>
-											</a>
-											<a href="index.html#" class="nav-item border-bottom">
-												<div class="nav-link">
-													<div class="nav-icon mr-3">
-														<i class="fas fa-plane text-success"></i>
-													</div>
-													<div class="nav-text">
-														<div class="font-weight-bold">New report has been received</div>
-														<div class="text-muted">23 hrs ago</div>
-													</div>
-												</div>
-											</a>
-											<a href="index.html#" class="nav-item border-bottom">
-												<div class="nav-link">
-													<div class="nav-icon mr-3">
-														<i class="fas fa-plane text-success"></i>
-													</div>
-													<div class="nav-text">
-														<div class="font-weight-bold">New report has been received</div>
-														<div class="text-muted">23 hrs ago</div>
-													</div>
-												</div>
-											</a>
-											<a href="index.html#" class="nav-item border-bottom">
-												<div class="nav-link">
-													<div class="nav-icon mr-3">
-														<i class="fas fa-plane text-success"></i>
-													</div>
-													<div class="nav-text">
-														<div class="font-weight-bold">New report has been received</div>
-														<div class="text-muted">23 hrs ago</div>
-													</div>
-												</div>
-											</a>
-											<a href="index.html#" class="nav-item border-bottom">
-												<div class="nav-link">
-													<div class="nav-icon mr-3">
-														<i class="fas fa-plane text-success"></i>
-													</div>
-													<div class="nav-text">
-														<div class="font-weight-bold">New report has been received</div>
-														<div class="text-muted">23 hrs ago</div>
-													</div>
-												</div>
-											</a>
-											<a href="index.html#" class="nav-item border-bottom">
-												<div class="nav-link">
-													<div class="nav-icon mr-3">
-														<i class="fas fa-plane text-success"></i>
-													</div>
-													<div class="nav-text">
-														<div class="font-weight-bold">New report has been received</div>
-														<div class="text-muted">23 hrs ago</div>
-													</div>
-												</div>
-											</a>
-											<a href="index.html#" class="nav-item border-bottom">
-												<div class="nav-link">
-													<div class="nav-icon mr-3">
-														<i class="fas fa-plane text-success"></i>
-													</div>
-													<div class="nav-text">
-														<div class="font-weight-bold">New report has been received</div>
-														<div class="text-muted">23 hrs ago</div>
-													</div>
-												</div>
-											</a>
-											<a href="index.html#" class="nav-item border-bottom">
-												<div class="nav-link">
-													<div class="nav-icon mr-3">
-														<i class="fas fa-daimond text-success"></i>
-													</div>
-													<div class="nav-text">
-														<div class="font-weight-bold">New report has been received</div>
-														<div class="text-muted">23 hrs ago</div>
-													</div>
-												</div>
-											</a>
+											<?php 
+											$notifications = DB::table('actions')->where('status',0)->orderBy('created_at','desc')->get();	
+											?>
+											@foreach ( $notifications as $notification )
+												@if(in_array(Auth::guard('admin')->user()->id, json_decode($notification->will_view)))
+													<a href="{{route('notifications.show',$notification->id)}}" class="nav-item border-bottom" >
+																	<?php
+																	//$date1 = new DateTime($notification->created_at);
+																	//$now = new DateTime();
+																	//$interval = $date1->diff($now);
+																		$time1 = new DateTime($notification->created_at);
+																        $time2 = new DateTime();
+																		$interval = $time1->diff($time2);
+																	?>
+																	<div class="nav-link">
+																		<div class="nav-icon mr-3">
+																			<i class="{{$notification->icon}}"></i>
+																		</div>
+																		<div class="nav-text">
+																			<div class="font-weight-bold">{{$notification->title}}</div>
+																			<div class="text-muted">{{$interval->format('%s seconds')}} ago</div>
+																		</div>
+																	</div>
+																</a>
+														@endif
+											@endforeach
 										</div>
 										<div class="d-flex flex-column p-3 rounded-top">
 
 											<h4 class="d-flex justify-content-center mb-0  rounded-top">
-												<a href="index.html#" class="font-size-base text-primary">View All</a>
+												<a href="#" class="font-size-base text-primary">View All</a>
 
 											</h4>
 
@@ -1771,17 +1611,17 @@ License: You must have a valid license purchased only from themeforest(the above
 
 		</div>
 	</div>	
-	<script src="assets/js/plugin.bundle.min.js"></script>
-	<script src="assets/js/bootstrap.bundle.min.js"></script>
-	<script src="assets/api/jqueryvalidate/jquery.validate.min.js"></script>
-	<script src="assets/api/apexcharts/apexcharts.js"></script>
-	<script src="assets/api/apexcharts/scriptcharts.js"></script> 
-	<script src="assets/api/pace/pace.js"></script>
-	<script src="assets/api/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-	<script src="assets/api/quill/quill.min.js"></script>
-	<script src="assets/api/datatable/jquery.dataTables.min.js"></script>
+	<script src="{{asset('assets/js/plugin.bundle.min.js')}}"></script>
+	<script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+	<script src="{{asset('assets/api/jqueryvalidate/jquery.validate.min.js')}}"></script>
+	<script src="{{asset('assets/api/apexcharts/apexcharts.js')}}"></script>
+	<script src="{{asset('assets/api/apexcharts/scriptcharts.js')}}"></script> 
+	<script src="{{asset('assets/api/pace/pace.js')}}"></script>
+	<script src="{{asset('assets/api/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+	<script src="{{asset('assets/api/quill/quill.min.js')}}"></script>
+	<script src="{{asset('assets/api/datatable/jquery.dataTables.min.js')}}"></script>
 	
-	<script src="assets/js/script.bundle.js"></script>
+	<script src="{{asset('assets/js/script.bundle.js')}}"></script>
 	<script>
 		var options = {
 	  debug: 'info',

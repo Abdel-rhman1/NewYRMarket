@@ -12366,8 +12366,8 @@ a:hover {
     margin: 0;
     cursor: pointer; }
 
-input[type="file"] {
-  display: none; }
+/*input[type="file"] {
+  display: none; }*/
 
 .modal-full {
   max-width: 94%;
@@ -12807,7 +12807,7 @@ table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.
         margin: 0;
         display: block;
         list-style: none;
-        height: 295px;
+        /* height: 295px; */
         overflow-y: scroll; }
         .topbar .dropdown .dropdown-menu .nav .nav-item {
           padding: 0;

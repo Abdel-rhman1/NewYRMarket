@@ -12366,8 +12366,8 @@ a:hover {
     margin: 0;
     cursor: pointer; }
 
-input[type="file"] {
-  display: none; }
+/*input[type="file"] {
+  display: none; }*/
 
 .modal-full {
   max-width: 94%;

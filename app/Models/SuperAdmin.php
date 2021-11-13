@@ -24,5 +24,8 @@ class SuperAdmin extends Authenticatable
     {
         return $this->is_active;
     }
+    public function scopeActive($query){
+        return $query->where('status',1);
+    }
 
 }
